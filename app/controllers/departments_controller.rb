@@ -1,13 +1,13 @@
 class DepartmentsController < ApplicationController
   def index
-    @departments = Department.all.order({ :created_at => :desc })
+    @departments = Department.all.order({ :id => :asc })
 
     render({ :template => "departments/index" })
   end
 
   def show
     the_id = params.fetch("path_id")
-    @department = Department.where({:id => the_id })
+    @department = Department.where({:id => the_id }).at(0)
 
     render({ :template => "departments/show" })
   end
@@ -16,6 +16,15 @@ class DepartmentsController < ApplicationController
     @department = Department.new
     @department.name = params.fetch("query_name")
 
+  #Q1 How does this method "create" connect back to the .erb files index.html.erb
+
+  #Q2 The attribute "action" with insert_department, is that just a placeholder URL? So when the form is actually submitted, the "redirect_to" points the new page back to /departments instead of /insert_department?
+
+  #Q3 What does the symbol :notice do or refer to? When I place a valid department name, I don't see the message "Department created successfully" so is the second argument necessary (same for when it fails)?
+
+  #Q4 Best place to read documentation for ActiveRecord methods, etc. 
+
+  #NOTES -> SEARCH app/views/courses/index
     if @department.valid?
       @department.save
       redirect_to("/departments", { :notice => "Department created successfully." })
