@@ -12,6 +12,7 @@ class CoursesController < ApplicationController
     render({ :template => "courses/show" })
   end
 
+  #4 Course.new creates a new Instance = new row for the database "courses". The rest of the information needed for the columns in the database is defined by the column names (i.e .title, .term_offered). If you do NOT know the column names, check the app/models folder. There are automatic notes left in the individual files highlighting the name + data type.
   def create
     @course = Course.new
     @course.title = params.fetch("query_title")
@@ -26,6 +27,7 @@ class CoursesController < ApplicationController
     end
   end
 
+  #5 These params fetch will always come from the .html.erb files. If you need to double check, go to the corresponding file and find the <form> tags.
   def update
     id = params.fetch("path_id")
     @course = Course.where({ :id => id }).at(0)

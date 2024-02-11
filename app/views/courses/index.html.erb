@@ -4,7 +4,9 @@
 
 <hr>
 
-<!--2 Forms should always have the attribute "method" defined. This should be the value post. AFTERWARDS, make sure to check routes.rb to have a post() method directed at the right webpage, in this case: /insert_course.-->
+<!--2 Forms should always have the attribute "method" defined. This should be the value post. AFTERWARDS, make sure to check routes.rb to have a post() method directed at the right webpage, in this case: /insert_course. POST method are usually used anytime the <form> tag is involved. Otherwise, use .get()-->
+
+<!--3 Remember: when creating forms, we need a Parent tag: <form> and three sibling tags: <label>, <input>, and <button>. Include the necessary attributes. SEARCH courses_controller.rb-->
 <form action="/insert_course" method="post">
   <div>
     <label for="title_box">
